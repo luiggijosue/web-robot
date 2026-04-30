@@ -1,0 +1,186 @@
+/* reset basico */
+* {
+  margin: 0; /* sin este, el navegador añade un espacio blanco alrededor de todo */
+  padding: 0; /* sin este, el navegador añade un espacio blanco alrededor de todo */
+  box-sizing: border-box; /* esto hace que el padding y el border se incluyan dentro del ancho y alto total de los elementos, evitando que se desborden */
+}
+
+/* IMAGEN DIFUMINADA CON TEXTO SOBRE ELLA: Capa 1: el color varia en funcion al color de tu texto ( texto claro=capa oscura) asi tenemos el contraste 50% de opacidad encima de la imagen.
+     Capa 2: tu foto de fondo
+     EN LA WEB: verás tu foto oscurecida a la mitad, con el texto legible encima */
+header {
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.686), rgba(0, 0, 0, 0)),
+    url("fotos/robotniños.png"); /* la primera capa es el color con opacidad, la segunda es la imagen de fondo */
+  background-size: cover; /* la imagen se adapta al tamaño del header sin deformarse */
+  background-position: center; /* centra la imagen dentro del header */
+  /* intento de solucion para cabecera recortada cuando esta maximizada*/
+  min-height: 25vw; /* esto asegura que el header tenga una altura mínima proporcional al ancho de la pantalla, evitando que se recorte demasiado en pantallas grandes */
+}
+header img {
+  width: 100%; /* la imagen ocupa todo el ancho del header */
+  height: auto; /* la altura se ajusta automáticamente para mantener la proporción */
+  display: block; /* esto elimina el espacio debajo de la imagen que aparece por defecto al ser un elemento inline */
+  overflow: hidden; /* esto asegura que la imagen no se salga de los bordes del header, especialmente si el header tiene un tamaño fijo o un borde redondeado */
+}
+/* ── BODY Afecta a TODA la página.---*/
+body {
+  font-family:
+    "Montserrat", sans-serif; /* fuente para todo el texto, excepto el título que tiene su propia fuente */
+  margin: 0; /* sin este, el navegador añade un espacio blanco alrededor de todo */
+  padding: 0; /* sin este, el navegador añade un espacio blanco alrededor de todo */
+  background: linear-gradient(180deg, #cce8f7, #ffffff);
+  color: #1a3a5c; /* Color para todo el texto */
+}
+/* ── TÍTULO PRINCIPAL (h1) ─────────────────────────────────────────────
+   Solo afecta a los <h1>.
+   EN LA WEB: el título "Primer Robot" se verá con la fuente Share Tech,
+   que tiene un estilo más tecnológico y diferente al resto del texto. */
+
+h1 {
+  color: #0d3d4a; /* Color solo para el título */
+  font-family: "Share Tech", sans-serif;
+  font-size: 600%; /* tamaño del texto */
+  margin-top: auto; /* esto hace que el título se pegue al borde superior del 
+  header */
+  padding-left: 40px; /* espacio a la izquierda del título para que no quede pegado al borde del header (nuevo arreglo) */
+}
+
+nav {
+  background: #1a3a5c; /* fondo del menú */
+  position: sticky; /* esto hace que el menú se quede fijo en la parte superior de la pantalla al hacer scroll */
+  top: 0; /* esto asegura que el menú se pegue al borde superior de la pantalla */
+}
+nav ul {
+  display: flex; /* esto hace que los enlaces se organicen en una fila */
+  list-style: none; /* esto quita los puntos de la lista */
+  margin: 0; /* sin este, el navegador añade un espacio blanco alrededor de la lista */
+  padding: 0px; /* sin este, el navegador añade un espacio blanco alrededor de la lista */
+  gap: 5px; /* espacio entre los enlaces */
+}
+nav ul li a {
+  display: block; /* esto hace que el enlace se comporte como un bloque, permitiendo aplicar padding y margin */
+  padding: 14px 22px; /* espacio dentro del enlace para hacerlo más grande y fácil de clicar */
+  color: #ffffff; /* color del texto del enlace */
+  text-decoration: none; /* quita el subrayado del enlace */
+  font-size: 105%; /* tamaño del texto del enlace */
+  letter-spacing: 1px; /* espacio entre las letras del texto del enlace */
+  transition: background 0.3s ease; /* esto hace que el fondo del enlace cambie suavemente al pasar el mouse (sin a:hover no ves el efecto) */
+}
+
+/* ── CONTENIDO PRINCIPAL (main) ───────────────────────────────────────
+   Solo afecta a la etiqueta <main>.
+   EN LA WEB: el contenido principal (descripción y productos) se verá
+   centrado y con un ancho máximo para que no se extienda demasiado en
+   pantallas grandes. */
+main {
+  max-width: 1200px; /* esto limita el ancho del contenido principal para que no se extienda demasiado en pantallas grandes */
+  margin: 10px; /* esto centra el contenido principal horizontalmente y añade un espacio arriba y abajo */
+}
+nav a:visited {
+  color: white; /* esto hace que los enlaces visitados se mantengan blancos, igual que los enlaces no visitados, para mantener la coherencia visual del menú */
+}
+h3 {
+  color: #0d3d4a; /* Color solo para los subtítulos */
+  font-family:
+    "Share Tech", sans-serif; /* misma fuente que el título para mantener la coherencia visual */
+  font-size: 200%; /* tamaño del texto */
+  margin-top: 10px; /* espacio arriba del subtítulo */
+  margin-bottom: 20px; /* espacio debajo del subtítulo */
+}
+h4 {
+  padding: 10px; /* espacio dentro del subtítulo para que no quede pegado al borde */
+  margin-top: 10px; /* espacio arriba del subtítulo */
+  margin-bottom: 10px; /* espacio debajo del subtítulo */
+}
+.layout {
+  display: flex; /* esto hace que la descripción y los productos se organicen en una fila */
+  gap: 20px; /* espacio entre la descripción y los productos */
+  flex-wrap: wrap; /* permite que la descripción y los productos se ajusten a la pantalla */
+  justify-content: flex-start; /* centra el contenido horizontalmente */
+  padding: 60px 10px 60px 5px; /* espacio alrededor del contenido principal */
+  align-items: flex-start; /* alinea la descripción y los productos al inicio de la fila */
+}
+.descripcion {
+  flex: 1; /* esto hace que la descripción ocupe todo el espacio disponible a la izquierda */
+  max-width: 250px; /* esto limita el ancho de la descripción para que no se extienda demasiado en pantallas grandes */
+  background: white; /* fondo blanco para la descripción */
+  border-radius: 50px; /* bordes redondeados, mientras mas alto sea el px mas redondeados serán las tarjetas */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* sombra para dar profundidad a la tarjeta de descripción */
+  padding: 40px; /* espacio dentro de la tarjeta de descripción */
+}
+.contenedor-productos {
+  display: flex; /* esto hace que los productos se organicen en una fila */
+  gap: 30px; /* espacio entre los productos */
+  flex-wrap: wrap; /* permite que los productos se ajusten a la pantalla */
+  justify-content: space-evenly; /* esto distribuye los productos de manera uniforme en el espacio disponible */
+  padding: 25px; /* espacio alrededor del contenedor de productos */
+  flex: 1; /* esto hace que el contenedor de productos ocupe todo el espacio disponible a la derecha */
+}
+
+.productos {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease; /* esto hace que la tarjeta se agrande y la sombra se intensifique suavemente al pasar el mouse (sin .productos:hover no ves el efecto) */
+  width: 230px; /* esto es el ancho fijo para cada producto */
+  background: white; /* fondo blanco para cada producto */
+  border-radius: 50px; /* bordes redondeados, mientras mas alto sea el px mas redondeados serán las tarjetas */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* sombra para dar profundidad a la tarjeta */
+  overflow: hidden; /* esto asegura que la imagen no se salga de los bordes redondeados */
+  text-align: center; /* centra el texto dentro de cada producto */
+  padding-bottom: 15px; /* espacio debajo del texto para que no quede pegado al borde inferior */
+}
+.productos:hover {
+  transform: perspective(800px) rotateY(-20deg); /* esto hace que la tarjeta se agrande un poco al pasar el mouse por encima */
+  box-shadow: -14px 14px 35px rgba(0, 0, 0, 0.35); /* sombra más intensa para la tarjeta, dando un efecto de profundidad */
+}
+.productos img {
+  width: 100%; /* la imagen ocupa todo el ancho del producto */
+  height: auto; /* la altura se ajusta automáticamente para mantener la proporción */
+  object-fit: cover; /* esto hace que la imagen se recorte para llenar el espacio sin deformarse */
+  transition: transform 0.3s ease; /* esto hace que la imagen se agrande suavemente al pasar el mouse (sin img:hover no ves el efecto) */
+}
+.productos img:hover {
+  transform: rotateY(
+    -10deg
+  ); /* esto levanta la imagen un poco para que quede más integrada con el diseño de la tarjeta */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* sombra más intensa para la imagen, dando un efecto de profundidad */
+}
+.productos a {
+  display: inline-block; /* esto hace que el enlace se comporte como un bloque, permitiendo aplicar padding y margin */
+  margin-top: 10px; /* espacio arriba del enlace */
+  padding: 10px 20px; /* espacio dentro del enlace para hacerlo más grande y fácil de clicar */
+  background: #1a3a5c; /* fondo del enlace */
+  color: #ffffff; /* color del texto del enlace */
+  text-decoration: none; /* quita el subrayado del enlace */
+  border-radius: 20px; /* bordes redondeados para el botón de enlace */
+  font-weight: bold; /* texto en negrita para destacar el enlace */
+  transition: background 0.3s ease; /* esto hace que el fondo del enlace cambie suavemente al pasar el mouse (sin a:hover no ves el efecto) */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra para dar profundidad al botón de enlace */
+}
+.productos a:hover {
+  background-color: #cc7a00; /* esto cambia el fondo del enlace al pasar el mouse por encima */
+}
+.productos p {
+  margin-top: 10px; /* espacio arriba del texto de descripción del producto */
+  font-size: 17px; /* tamaño del texto de descripción del producto */
+  color: #333333; /* color del texto de descripción del producto */
+}
+footer {
+  background: #1a3a5c; /* fondo del footer */
+  color: #ffffff; /* color del texto del footer */
+  text-align: center; /* centra el texto dentro del footer */
+  padding: 20px; /* espacio dentro del footer */
+  font-size: 90%; /* tamaño del texto del footer */
+  border-top: 4px solid #ff9900;
+}
+footer p {
+  margin-top: 10px; /* espacio arriba del texto del footer */
+  font-size: 14px; /* tamaño del texto del footer */
+}
+@media (max-width: 768px) {
+  h1 {
+    font-size: 250%;
+    padding-left: 20px;
+  }
+}
